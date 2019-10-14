@@ -20,9 +20,29 @@
   http://www.imparareaprogrammare.it
 */
 
-var num_Gatti = 51;
-var gatti_per_Fila = 15;
+var num_Gatti = 100 ;
+var num_Gatti_per_Fila = 6;
+var round_file_Risultante;
 
-//restituisco il num di file risultante
-var fileRisultante = num_Gatti / gatti_per_Fila;
-console.log(`il numero file risultante è ${fileRisultante}`);
+//Questa funzione restituice le file di gatti con arrotondamento.
+function num_file_risultante() {
+  let fileRisultante  = num_Gatti / num_Gatti_per_Fila
+  //return fileRisultante;
+  round_file_Risultante = Math.ceil(fileRisultante);
+  return round_file_Risultante;
+}
+//questa funzione restituice i gatti che potrebbero avanzare nell'ultima fila.
+function gatti_Restanti_Ultima_Fila(){
+let gatti_Restanti_Ultima_Fila = (round_file_Risultante * num_Gatti_per_Fila) - num_Gatti;
+if(gatti_Restanti_Ultima_Fila === 0){
+  return 'Tutte le file sono al completo.'
+}else{
+  return `Nell'ultima fila sono ancora vacanti ${gatti_Restanti_Ultima_Fila} posti per completare la fila.`;
+}
+}
+
+
+console.log(`Numero di gatti disponibili: ${num_Gatti}`);
+console.log(`Numero di gatti per fila: ${num_Gatti_per_Fila}`);
+console.log(`Il numero di file disponibile per gatti è: ${num_file_risultante()}`);
+console.log(gatti_Restanti_Ultima_Fila());
